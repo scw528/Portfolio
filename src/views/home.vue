@@ -1,25 +1,28 @@
 <template>
     <v-container fill-height fill-width>
-      <v-row class="d-flex" justify="end" align="end" style="height: inherit">
-        <v-col cols="8" style="height: inherit" @click.once="dropItems()" id="sheetCol">
+      <v-row class="ma-auto" justify-lg="end" align-lg="end" justify-sm="center" align-sm="center" style="height: inherit">
+        <v-col lg="8" md="7" sm="7" style="height: inherit" @click.once="dropItems()" id="sheetCol">
           <v-sheet
             id="sheet"
             tile
-            class="d-flex"
+            class="clickable"
             color="#BF9ACA"
             style="height: inherit"
           >
             <canvas id="canvas"></canvas>
-            <v-row>
-              <v-col cols="6">
-                <h1 id="what">Full Stack Developer</h1>
-              </v-col>
-            </v-row>
-            <v-row align="end" justify="end">
-              <v-col cols="12">
-                <h1 class="text-right" id="where">Saskatoon SK</h1>
-              </v-col>
-            </v-row>
+            <v-container fluid fill-height>
+              <v-row justify="start" align="start" class="mt-n12">
+                <v-col lg="4" md="4" sm="6">
+                  <h1 class="text-left" id="what">Full Stack Developer</h1>
+                </v-col>
+              </v-row>
+              <v-spacer></v-spacer>
+              <v-row justify="end" align="end" class="ml-3 mb-n12">
+                <v-col lg="4" md="4" sm="6">
+                  <h1 class="text-right" id="where">Saskatoon Sk</h1>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-sheet>
         </v-col>
       </v-row>
@@ -116,12 +119,7 @@ export default {
               });
         }
       });
-
-      //eslint-disable-next-line no-console
-      console.log(stack)
-      
-      // stack.bodies[0].style.cursor = "pointer";
-      
+            
       // create the walls
       var groundLeft = Bodies.rectangle(0, sheet.height/2, 50, sheet.height, { isStatic: true, render: { visible: false} });
       var groundRight = Bodies.rectangle(sheet.width, (sheet.height/2), 50, sheet.height, { isStatic: true, render: { visible: false} });
@@ -143,9 +141,6 @@ export default {
               }
           });
 
-      //eslint-disable-next-line no-console
-      console.log(mouse.absolute)
-
       // keep the mouse in sync with rendering
       render.mouse = mouse;
 
@@ -159,9 +154,6 @@ export default {
 
         //For Matter.Query.point pass "array of bodies" and "mouse position"
         var foundPhysics = Matter.Query.point(stack.bodies, event.mouse.position);
-
-        //eslint-disable-next-line no-console
-        // console.log(foundPhysics); //returns a shape corrisponding to the mouse position
 
         // when cursor is over a body, set it to pointer
         if (foundPhysics.length > 0) {
@@ -181,6 +173,9 @@ export default {
 
       // run the renderer
       Render.run(render);
+
+      document.getElementById('what').className ='slam';  
+
     }
   }
 }
@@ -188,21 +183,23 @@ export default {
 
 <style>
   #what {
-    transform: translateX(-15%); 
-    font-size: 36pt;
-    color: white;
-    letter-spacing: 3pt;
-    z-index:10;
-    user-select: none;
-  }
-
-  #where {
-    transform: translateX(12%); 
+    /* transform: translateX(-32%);  */
     font-size: 36pt;
     color: white;
     letter-spacing: 3pt;
     z-index:1;
     user-select: none;
+    font-family: AnonymousPro
+  }
+
+  #where {
+    /* transform: translateX(22%);  */
+    font-size: 28pt;
+    color: white;
+    letter-spacing: 3pt;
+    z-index:1;
+    user-select: none;
+    font-family: AnonymousPro
   }
 
   #sheet {
@@ -210,8 +207,15 @@ export default {
     z-index: 2;
   }
 
+  .clickable:visited {
+    cursor: default
+  }
+  .clickable {
+    cursor: pointer;
+  }
+
   #sheet:hover {
-    transform: scale(1.005)
+    transform: scale(1.01);
   }
 
   #canvas {
@@ -222,7 +226,50 @@ export default {
     z-index: 3;
   }
 
+  .bottomRight {
+    height: inherit;
+  }
 
+  .slam {
+    animation: rattle 0.8s;
+    animation-timing-function: ease-in;
+    position: relative;
+  }
+
+  @keyframes slam {
+    0%
+    {
+      transform: scale(1.2, 1.2);
+      opacity: 0;
+    }
+    
+    40%
+    {
+      opacity: 1;
+    }
+    
+    100%
+    {
+      transform: scale(1, 1);
+      opacity: 1;
+      transform: translateX(-15%);
+    }
+  }
+
+  @keyframes rattle
+  {
+    0% { margin-top: 0; margin-left: 0; }
+    10% { margin-top: -5px; margin-left: 0; }
+    20% { margin-top: 0; margin-left: -5px; }
+    30% { margin-top: 5px; margin-left: 0; }
+    40% { margin-top: 0; margin-left: 5px; }
+    50% { margin-top: -2px; margin-left: 0; }
+    60% { margin-top: 0; margin-left: -2px; }
+    70% { margin-top: 2px; margin-left: 0; }
+    80% { margin-top: 0; margin-left: 2px; }
+    90% { margin-top: -1px; margin-left: 0; }
+    100% { margin-top: 0; margin-left: 0; }
+  }
 
 </style>
 

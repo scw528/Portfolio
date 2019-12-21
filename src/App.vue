@@ -1,26 +1,63 @@
 <template>
   <v-app id="app" style="background: black">
-    <v-toolbar prominent dark color="black" max-height="128px" class="mx-12 px-12">
-        <v-container fill-height>
-          <h3 id="title" class="my-auto uppercase">
-            Sam Wilkinson
-          </h3>
-        </v-container>
+    <v-navigation-drawer
+      dark
+      height="100%"
+      width="45%"
+      v-model="drawer"
+      temporary
+      app
+    >
+      <v-divider></v-divider>
 
-        <v-spacer></v-spacer>
+      <v-list dense dark>
 
-        <v-toolbar-items>
-          <v-btn
-            color="#696969"
-            text
-            v-for="item in menuItems"
-            :key="item.name"
-            router
-            v-bind:to="item.link"
-            >
-              {{item.name}}
-          </v-btn>
-        </v-toolbar-items>
+        <v-list-item
+          dark
+          v-for="item in menuItems"
+          :key="item.name"
+          link
+          router
+          v-bind:to="item.link"
+        >
+          <v-list-item-icon>
+            <v-icon dark>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.name }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar prominent dark color="black" max-height="128px" class="mx-sm-2 mx-md-12 px-md-12 ">
+      <v-container fill-height fill-width>
+        <v-row>
+          <v-col v-if="$vuetify.breakpoint.mdAndDown">
+              <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+          </v-col>
+          <v-col>
+            <h3 id="title" class="my-auto uppercase">
+              Sam Wilkinson
+            </h3>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-spacer></v-spacer>
+
+      <v-toolbar-items v-if="$vuetify.breakpoint.mdAndUp">
+        <v-btn
+          color="#696969"
+          text
+          v-for="item in menuItems"
+          :key="item.name"
+          router
+          v-bind:to="item.link"
+          >
+            {{item.name}}
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
         <router-view/>
@@ -29,10 +66,13 @@
 </template>
 
 <script>
-
+import '@mdi/font/css/materialdesignicons.css'
 export default {
   data: () => ({
-    toggle_exclusive: undefined,
+    drawer: null,
+    /*
+      TODO: need to add icons
+    */
     menuItems: [
       {name: "Home", link: "/"},
       {name: "About", link: '/about'},
@@ -69,6 +109,10 @@ export default {
 
   .uppercase {
     text-transform: uppercase;
+  }
+
+  .v-app-bar-nav-icon {
+    color: white;
   }
 
   #title {
