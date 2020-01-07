@@ -186,7 +186,7 @@ export default {
     /* transform: translateX(-32%);  */
     font-size: 36pt;
     color: white;
-    letter-spacing: 3pt;
+    letter-spacing: 1.4pt;
     z-index:1;
     user-select: none;
     font-family: AnonymousPro
@@ -196,7 +196,7 @@ export default {
     /* transform: translateX(22%);  */
     font-size: 28pt;
     color: white;
-    letter-spacing: 3pt;
+    letter-spacing: 2pt;
     z-index:1;
     user-select: none;
     font-family: AnonymousPro

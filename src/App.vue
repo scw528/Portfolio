@@ -1,6 +1,7 @@
 <template>
   <v-app id="app" style="background: black">
     <v-navigation-drawer
+      id="navDrawer"
       dark
       height="100%"
       width="45%"
@@ -33,7 +34,7 @@
     <v-toolbar prominent dark color="black" max-height="128px" class="mx-sm-2 mx-md-12 px-md-12 ">
       <v-container fill-height fill-width>
         <v-row>
-          <v-col v-if="$vuetify.breakpoint.mdAndDown">
+          <v-col v-if="$vuetify.breakpoint.smAndDown">
               <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
           </v-col>
           <v-col>
@@ -74,10 +75,10 @@ export default {
       TODO: need to add icons
     */
     menuItems: [
-      {name: "Home", link: "/"},
-      {name: "About", link: '/about'},
-      {name: "Projects", link: "/projects"},
-      {name: "Contact", link: "/contact"},
+      {name: "Home", link: "/", icon: 'mdi-home'},
+      {name: "About", link: '/about', icon: 'mdi-information-outline'},
+      {name: "Projects", link: "/projects", icon: 'mdi-folder'},
+      {name: "Contact", link: "/contact", icon: 'mdi-contact-mail'},
     ]
   }),
 };
@@ -118,6 +119,10 @@ export default {
   #title {
     font-family: PoppinsReg;
     font-size: 16pt
+  }
+
+  #navDrawer {
+    color: black
   }
 
 </style>
