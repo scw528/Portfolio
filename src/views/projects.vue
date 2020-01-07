@@ -59,14 +59,14 @@ export default {
       {name: "Grub", 
         description: "Working with two other University of Saskatchewan graduates, we aim to decrease waste,\
         by providing alternatives for single-use takeout cups and containers. <br/><br/> I developed a fully responsive\
-        website to generate and promote our business.", 
+        website to advertise and promote our business.", 
         stack: "React, Firebase",
         github: "/gitgrub",
         link: "grub",
         color: "#70AE98", active: false
       },
-      {name: "PBB Yoga", 
-        description: "PBB or PureBody Balance is a web application for a Yoga and Melt Method business located in\
+      {name: "PureBody Balance", 
+        description: "PureBody Balance is a web application for a Yoga and Melt Method business located in\
         Saskatoon, SK. <br/><br/> I developed a responsive and dynamic website to promote their business, as well as a custom CMS\
         that allows them to update their calendar.",
         stack: "Node.js, Vue.js, Firebase",
