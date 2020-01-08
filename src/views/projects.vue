@@ -9,20 +9,35 @@
               width="100%"
               tile
               :color="item.color"
-              @click="showProject(item)"
+              @click="toggleProject(item)"
             >
               <v-container fill-height>
                 <v-row align="center" class="ma-auto">
                   <h3 id="projectName" class="text-center"> {{item.name}} </h3>
                   <v-spacer></v-spacer>
-                  <v-icon id="projectIcon" color="white">mdi-chevron-right</v-icon>
+                  <v-icon v-if="$vuetify.breakpoint.mdAndUp" id="arrowRight" color="white">mdi-chevron-right</v-icon>
+                  <v-icon v-if="$vuetify.breakpoint.smAndDown" id="arrowLeft" color="white">mdi-chevron-down</v-icon>
                 </v-row>
               </v-container>
+            </v-sheet>
+            <v-sheet id="mobileProject" class="mt-n12" v-if="projectInfoSheet && item.active && $vuetify.breakpoint.smAndDown" tile width="100%" :color="item.color">
+              <v-col class="px-6">
+                <v-row class="mb-2 text-wrap" align="start" justify="start" style="height: inherit; word-wrap: break-word;">
+                  <h2 id="info" v-html="item.description"></h2>
+                </v-row>
+                <v-row class="mt-2" align="center" justify="start" style="height: inherit; word-wrap: break-word;">
+                  <h3 id="techStack">Technologies Used: {{item.stack}}</h3>
+                </v-row>
+              </v-col>
+              <v-row align="end" justify="center" class="mx-2">
+                <v-btn router v-bind:to="item.github" text icon :disabled="item.disabled" class="ma-2"><v-icon large>mdi-github-circle</v-icon></v-btn>
+                <v-btn router v-bind:to="item.link" text icon :disabled="item.disabled" class="ma-2"> <v-icon large>mdi-open-in-new</v-icon> </v-btn>
+              </v-row>
             </v-sheet>
 
           </v-row>
       </v-col>
-      <v-col v-if="projectInfoSheet" lg="8" md="6" sm="12">
+      <v-col v-if="projectInfoSheet && $vuetify.breakpoint.mdAndUp" lg="8" md="6" sm="12">
         <v-row v-for="item in activeProjects" :key="item.name">
           <v-sheet tile :color="item.color" id="infoSheet" height="800px" width="50vw">
             <v-container fluid fill-height>
@@ -36,8 +51,8 @@
                   </v-row>
                 </v-col>
                 <v-row align="end" justify="end">
-                    <v-btn router v-bind:to="item.github" text icon><v-icon>mdi-github-circle</v-icon></v-btn>
-                    <v-btn router v-bind:to="item.link" text icon> <v-icon>mdi-open-in-new</v-icon> </v-btn>
+                    <v-btn router v-bind:to="item.github" text icon :disabled="item.disabled" class="ma-2"><v-icon large>mdi-github-circle</v-icon></v-btn>
+                    <v-btn router v-bind:to="item.link" text icon :disabled="item.disabled" class="ma-2"> <v-icon large>mdi-open-in-new</v-icon> </v-btn>
                 </v-row>
               </v-row>
             </v-container>
@@ -45,7 +60,6 @@
         </v-row>
       </v-col>
     </v-row>
-
   </v-container>
 </template>
 
@@ -63,7 +77,7 @@ export default {
         stack: "React, Firebase",
         github: "/gitgrub",
         link: "grub",
-        color: "#70AE98", active: false
+        color: "#70AE98", active: false, disabled: false,
       },
       {name: "PureBody Balance", 
         description: "PureBody Balance is a web application for a Yoga and Melt Method business located in\
@@ -72,7 +86,7 @@ export default {
         stack: "Node.js, Vue.js, Firebase",
         github: "/gitPBB",
         link: "/PBB",
-        color: "#ECBE7A", active: false
+        color: "#ECBE7A", active: false, disabled: false,
       },
       {name: "RUNNR", 
         description: "Runnr is a Saskatoon based startup, that allows a customer to choose the date and time\
@@ -81,23 +95,24 @@ export default {
         stack: "Node.js, Vue.js, Vuetify, MySQL(V1), Firebase(V2)",
         github: "/gitRUNNR",
         link: "/RUNNR",
-        color: '#9DABDD', active: false
+        color: '#9DABDD', active: false, disabled: false,
       },
       {name: "POTA",
         description: "POTA, or Pre-Operative Testing Application is an online form which aids doctors and nurses\
         to organize and simplify low risk minor surgeries in Saskatchewan. This was a group project which was\
-        completed for a Software Management class at the U of S. Acting as Front-end lead, I was responsible for\
-        leading my team to create a simple, responsive page, while liaising with doctors at the University of Saskatchewan.",
+        completed for a Software Management class at the U of S. <br/><br/> Acting as Front-end lead, I was responsible for\
+        leading my team to create a simple, responsive page, while liaising with doctors at the University of Saskatchewan.\
+        <br/><br/> Unfortunately, POTA is no longer being hosted, and the repository is private.",
         stack: "Node.js, Vue.js, Jest, Nightwatch",
         github: "",
         link: "",
-        color: "#E58B88", active: false
+        color: "#E58B88", active: false, disabled: true,
       },
     ]
   }),
   methods: {
     //eslint-disable-next-line no-unused-vars
-    showProject(item) {
+    toggleProject(item) {
       this.projectInfoSheet = true;
       this.projects.forEach((el)=>{el.active = false;})
       item.active = true;
@@ -124,11 +139,11 @@ export default {
   position: relative;
 }
 
-#projectSheet #projectIcon {
+#projectSheet #arrowRight {
   opacity: 0;
 }
 
-#projectSheet:hover #projectIcon{
+#projectSheet:hover #arrowRight{
   opacity: 1;
 }
 
@@ -145,6 +160,17 @@ export default {
 #techStack {
   font-family: AnonymousPro;
   color: black
+}
+
+.v-extension-panel {
+  min-height: 200px;
+}
+
+#mobileProject {
+  z-index: 10;
+  font-size: 10pt;
+  word-break: normal;
+  word-wrap: break-word
 }
 
 </style>

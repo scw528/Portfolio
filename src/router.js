@@ -32,37 +32,37 @@ export default new Router({
         {
             path: '/grub',
             beforeEnter() {
-              window.location = 'https://www.grubyxe.ca/';
+              window.open('https://www.grubyxe.ca/')
             },
         },
         {
             path: '/gitgrub',
             beforeEnter() {
-              window.location = 'https://github.com/scw528/grub';
+              window.open('https://github.com/scw528/grub');
             },
         },
         {
             path: '/gitPBB',
             beforeEnter() {
-              window.location = 'https://github.com/scw528/PBB';
+              window.open('https://github.com/scw528/PBB');
             },
         },
         {
             path: '/PBB',
             beforeEnter() {
-              window.location = 'https://pbbyoga-2872f.web.app/';
+              window.open('https://pbbyoga-2872f.web.app/');
             },
         },
         {
             path: '/gitRUNNR',
             beforeEnter() {
-              window.location = 'https://github.com/scw528/ParcelDelivery';
+              window.open('https://github.com/scw528/ParcelDelivery');
             },
         },
         {
             path: '/RUNNR',
             beforeEnter() {
-              window.location = 'https://vueexample-85e2b.firebaseapp.com/';
+              window.open('https://vueexample-85e2b.firebaseapp.com/');
             },
         },
     ],
