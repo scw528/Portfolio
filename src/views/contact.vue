@@ -6,7 +6,7 @@
           <v-sheet
             tile
             width="100%"
-            height="400px"
+            height="266.67px"
             :color="item.color"
           >
           <a :href="item.href" :target="item.target">
@@ -29,7 +29,8 @@ export default {
   data: () => ({
     contactItems: [
       {name: "Email", href: 'mailto:samuelwilkinson@me.com', target: "", color: "#9DABDD"},
-      {name: "LinkedIn", href: 'https://www.linkedin.com/in/sam-wilkinson-17a995185/', target: "_blank", color: "#70AE98"}
+      {name: "LinkedIn", href: 'https://www.linkedin.com/in/sam-wilkinson-17a995185/', target: "_blank", color: "#D0CFEC"},
+      {name: "GitHub", href: 'https://github.com/scw528/', target: "_blank", color: "#70AE98"}
     ]
   })
 }

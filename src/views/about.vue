@@ -5,16 +5,16 @@
           <v-sheet v-if="item.active && $vuetify.breakpoint.smAndUp"
             id="detailBody"
             tile
-            height="700px"
+            height="650px"
             width="100%"
             :color="item.color"
           >
-            <v-container>
-              <v-row class="ma-1" v-for="heading in item.headings" :key="heading.name">
+            <v-container v-for="heading in item.headings" :key="heading.name">
+              <v-row class="ma-1">
                 <h1 id="headings">{{heading.name}}</h1>
-                <v-row class="ma-3">
-                  <h3 id="details" v-html="heading.detail">></h3>
-                </v-row>
+              </v-row>
+              <v-row class="ma-3">
+                <h3 id="details" v-html="heading.detail">></h3>
               </v-row>
             </v-container>
           </v-sheet>
@@ -22,7 +22,7 @@
           <v-sheet
             id="detailTitle"
             tile
-            height="100px"
+            height="150px"
             width="100%"
             :color="item.color"
             @click="toggleDetails(item)"
@@ -55,7 +55,7 @@
           <v-sheet v-if="item.active"
             id="detailBody"
             tile
-            height="700px"
+            height="650px"
             width="100%"
             :color="item.color"
           >
