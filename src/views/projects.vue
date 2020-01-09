@@ -11,7 +11,7 @@
               :color="item.color"
               @click="toggleProject(item)"
             >
-              <v-container fill-height>
+              <v-container fluid fill-height>
                 <v-row align="center" class="ma-auto">
                   <h3 id="projectName" class="text-center"> {{item.name}} </h3>
                   <v-spacer></v-spacer>
@@ -79,7 +79,7 @@ export default {
         link: "grub",
         color: "#70AE98", active: false, disabled: false,
       },
-      {name: "PureBody Balance", 
+      {name: "PureBodyBalance", 
         description: "PureBody Balance is a web application for a Yoga and Melt Method business located in\
         Saskatoon, SK. <br/><br/> I developed a responsive and dynamic website to promote their business, as well as a custom CMS\
         that allows them to update their calendar.",
