@@ -1,13 +1,13 @@
 <template>
-    <v-container fill-height fill-width>
-      <v-row class="ma-auto" justify-lg="end" align-lg="end" justify-sm="center" align-sm="center" style="height: inherit">
-        <v-col lg="8" md="7" sm="7" style="height: inherit" @click.once="dropItems()" id="sheetCol">
+    <v-container fill-height class="pa-0">
+      <v-row class="ma-auto" justify-lg="start" align-lg="end" justify-sm="center" align-sm="center" style="height: inherit">
+        <v-col class="pb-0" lg="8" md="7" sm="6" style="height: inherit" @click.once="dropItems()" id="sheetCol">
           <v-sheet
             id="sheet"
             tile
+            height="800px"
             class="clickable"
-            color="#BF9ACA"
-            style="height: inherit"
+            color="#D0CFEC"
           >
             <canvas id="canvas"></canvas>
             <v-container fluid fill-height>
@@ -85,7 +85,7 @@ export default {
             return Bodies.rectangle(x, y, 40, 40,  {
               render: {
 
-                fillStyle: '#F3DE8A'
+                fillStyle: '#70AE98'
               },
               restitution: 0.1, 
               density: 0.5
@@ -94,7 +94,7 @@ export default {
             return Bodies.rectangle(x, y, 40, 40,  {
               render: {
 
-                fillStyle: '#C1CDDB'
+                fillStyle: '#ECBE7A'
               },
               restitution: 0.1, 
               density: 0.5
@@ -103,7 +103,7 @@ export default {
             return Bodies.rectangle(x, y, 40, 40,  {
               render: {
 
-                fillStyle: '#EFE9E7'
+                fillStyle: '#9DABDD'
               },
               restitution: 0.1, 
               density: 0.5
@@ -112,7 +112,7 @@ export default {
             return Bodies.rectangle(x, y, 40, 40,  {
               render: {
 
-                fillStyle: '#6D72C3'
+                fillStyle: '#E58B88'
               },
               restitution: 0.1, 
               density: 0.5
@@ -140,6 +140,9 @@ export default {
                   }
               }
           });
+
+      mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+      mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
 
       // keep the mouse in sync with rendering
       render.mouse = mouse;
@@ -189,7 +192,7 @@ export default {
     letter-spacing: 1.4pt;
     z-index:1;
     user-select: none;
-    font-family: AnonymousPro
+    font-family: PoppinsSB
   }
 
   #where {
@@ -215,7 +218,7 @@ export default {
   }
 
   #sheet:hover {
-    transform: scale(1.01);
+    transform: scale(1.003);
   }
 
   #canvas {

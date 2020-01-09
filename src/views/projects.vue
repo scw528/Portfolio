@@ -74,7 +74,7 @@ export default {
         description: "Working with two other University of Saskatchewan graduates, we aim to decrease waste,\
         by providing alternatives for single-use takeout cups and containers. <br/><br/> I developed a fully responsive\
         website to advertise and promote our business.", 
-        stack: "React, Firebase",
+        stack: "React, Material-UI, Firebase",
         github: "/gitgrub",
         link: "grub",
         color: "#70AE98", active: false, disabled: false,

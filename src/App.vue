@@ -1,6 +1,7 @@
 <template>
   <v-app id="app" style="background: black">
     <v-navigation-drawer
+      color="black"
       id="navDrawer"
       dark
       height="100%"
@@ -26,7 +27,7 @@
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.name }}</v-list-item-title>
+            <v-list-item-title id="drawerTitle">{{ item.name }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -35,7 +36,7 @@
       <v-container fill-height fill-width>
         <v-row>
           <v-col v-if="$vuetify.breakpoint.smAndDown">
-              <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+              <v-app-bar-nav-icon style="position: absolute" @click="drawer = !drawer"></v-app-bar-nav-icon>
           </v-col>
           <v-col>
             <h3 id="title" class="my-auto uppercase">
@@ -123,6 +124,10 @@ export default {
 
   #navDrawer {
     color: black
+  }
+
+  #drawerTitle {
+    font-family: PoppinsReg
   }
 
 </style>
