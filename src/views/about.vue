@@ -88,22 +88,21 @@ export default {
       { name: "Hobbies", active: false,
         headings: [
           {name: "Photography", detail: "Amateur Photographer"},
-          {name: "Design & Fashion", detail: "Interest in Architecture, Interior, Graphic & Product design <br/> Designer Wear"},
+          {name: "Design & Fashion", detail: "Interest in Architecture, Interior, Graphic & Product design <br/>"},
           {name: "Sports", detail: "Competitive Baseball <br/> Competitive Hockey <br/> Muay Thai Kick boxing <br/> Weight Trainging"},],
         color: "#D0CFEC"
       },
       { name: "Skills", active: false,
         headings: [
-          {name: "Front-End", detail: "Vue.js, Vuetify, React, Material-UI, HTML, CSS"},
-          {name: "Back-End", detail: "Node.js, SQL, Firebase, Java, Python, C#"},
-          {name: "Tools", detail: "GitHub, VSCode, Eciplse, Intellij IDEA, PyCharm, Command Line (Linux), Pixlr x"}],
+          {name: "Laguages", detail: "Javascript, PHP, Java, Python, C#/C++, SQL"},
+          {name: "Technologies", detail: "Node.js, Symfony, jQuery, Vue, React, Firebase, HTML, CSS"},
+          {name: "Tools", detail: "Jenkins, Docker, Linux Command Line, Git, VSCode"}],
         color: "#ECBE7A"}
     ]
   }),
   methods: {
     toggleDetails(item) {
       this.showMore = !this.showMore;
-      // this.about.forEach((el)=>{el.active = false;})
       item.active = !item.active;
     }
   },

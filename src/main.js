@@ -3,7 +3,11 @@ import App from './App.vue'
 import router from '@/router';
 import vuetify from './plugins/vuetify';
 import * as firebase from 'firebase';
+import VueAnalytics from 'vue-analytics'
 
+Vue.use(VueAnalytics, {
+  id: 'UA-151506632-1',
+})
 
 Vue.config.productionTip = false
 

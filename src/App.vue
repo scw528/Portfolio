@@ -1,6 +1,7 @@
 <template>
-  <v-app id="app" style="background: black">
+  <v-app id="app" style=" isPresenting ? background: black : background: white">
     <v-navigation-drawer
+      v-if="!isPresenting"
       color="black"
       id="navDrawer"
       dark
@@ -32,7 +33,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar prominent dark color="black" max-height="128px" class="mx-sm-2 mx-md-12 px-md-12 ">
+    <v-toolbar v-if="!isPresenting" prominent dark color="black" max-height="128px" class="mx-sm-2 mx-md-12 px-md-12 ">
       <v-container fill-height fill-width>
         <v-row>
           <v-col v-if="$vuetify.breakpoint.smAndDown">
@@ -69,19 +70,23 @@
 
 <script>
 import '@mdi/font/css/materialdesignicons.css'
+
 export default {
   data: () => ({
     drawer: null,
-    /*
-      TODO: need to add icons
-    */
     menuItems: [
       {name: "Home", link: "/", icon: 'mdi-home'},
       {name: "About", link: '/about', icon: 'mdi-information-outline'},
       {name: "Projects", link: "/projects", icon: 'mdi-folder'},
+      {name: "Experience", link: "/experience", icon: 'mdi-worker'},
       {name: "Contact", link: "/contact", icon: 'mdi-contact-mail'},
     ]
   }),
+  computed: {
+    isPresenting() {
+      return this.$route.name === 'presentation'
+    }
+  }
 };
 </script>
 
